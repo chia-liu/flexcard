@@ -1,0 +1,111 @@
+*
+  font-family: 'Belleza', sans-serif
+
+@mixin size($w,$h:$w)
+  width: $w
+  height: $h
+// media query
+@mixin pad
+  @media(max-width: 640px)
+    @content
+    
+@mixin mobile
+  @media(max-width: 375px)
+    @content
+    
+// $Colors
+$clrPrimary: #6b9080
+$clrSecondary: #a4c3b2
+$clrSupport: #cce3de
+$clrPrimaryLight: #f6fff8
+$clrSecondaryLight: #eaf4f4
+
+// $Global
+a
+  text-decoration: none
+li
+  list-style: none
+
+// $Main
+html, body
+  margin: 0
+  padding: 0
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  overflow: hidden
+  height: 100vh
+  transition: all .3s
+.container
+  margin: 0 auto
+  display: flex
+  min-width: 600px
+  max-width: 900px
+  flex-direction: column
+  +size(auto,80vh)
+  // +size(calc(100% - 100px),400px)
+  +pad
+    min-width: 400px
+  +mobile
+    min-width: 350px
+.card
+  position: relative
+  overflow: hidden
+  margin-bottom: 1rem
+  +size(100%,auto)
+  flex-grow: 1
+  border-radius: 15px
+  background-size: 130% auto
+  background-position: center
+  cursor: pointer
+  transform: scale(0.97)
+  transition: all .3s
+  box-shadow: inset 0 -120px 120px -120px $clrPrimaryLight, 0 3px 5px $clrSupport
+  &:after
+    content: ""
+    position: absolute
+    +size(100%)
+    opacity: 0.4
+    z-index: -2
+    background-image: linear-gradient(60deg,$clrPrimary,$clrSupport)
+  &:hover
+    box-shadow: 0 5px 5px $clrSupport
+    transform: scale(1)
+    &:after
+      opacity: 0
+  &:nth-child(1)
+    background-image: url('https://images.unsplash.com/photo-1634025151266-4773d6189169?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=927&q=80')
+  &:nth-child(2)
+    background-image: url('https://images.unsplash.com/photo-1635492491273-455af7728453?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1560&q=80')
+  &:nth-child(3)
+    background-image: url('https://images.unsplash.com/photo-1621544170639-fb0189e518ba?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070')
+  &.active
+    flex-grow: 4
+    transform: scale(1)
+    &:after
+      opacity: 0
+  .label
+    position: absolute
+    bottom: 0
+    display: flex
+    margin: 1rem
+    .icon
+      +size(50px)
+      display: flex
+      background-color: $clrPrimaryLight
+      border-radius: 50%
+      justify-content: center
+      align-items: center
+      i
+        font-size: 1rem
+        color: $clrSecondary
+    .info
+      margin-left: 1rem
+      color: $clrPrimaryLight
+      .title
+        font-weight: 600
+        text-transform: uppercase
+        font-size: 1.5rem
+      .content
+        opacity: 0.8
