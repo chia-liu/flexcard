@@ -120,3 +120,23 @@
   .card .label .info .content {
     opacity: 0.8;
   }
+
+  .footer{
+    width: 100%;
+    height: 42px;
+    background-color: rgba(162, 195, 177,0.3);
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer-link, .footer-link a{
+    color: #6a907f;
+    font-size: 14px;
+    transition: all 0.3s;
+  }
+  .footer-link a:hover{
+    opacity: 0.5;
+    font-size: 16px;
+  }
